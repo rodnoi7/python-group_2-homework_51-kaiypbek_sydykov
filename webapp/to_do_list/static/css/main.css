@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(222, 240, 204);
+    margin-top: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover, a:visited {
+    color: inherit;
+}
+
+.navbar {
+    display: block;
+    background: #0574fd;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 0;
+    box-sizing: border-box;
+    padding: 7px 30px;
+}
+
+.menu {
+    font-size: 17px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.menu li, .but {
+    display: inline-block;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.menu li a, .but {
+    display: inline-block;
+}
+
+.menu li a:hover {
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h2 {
+    display: inline-block;
+}
+
+table tr td, table tr th{
+    border: 1px solid #000;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class='container'>
+    {% block content %}
+        <h3>{{ task }}</h3>
+        {% for task in tasks %}
+            {{ task.name }}
+            <hr>
+        {% endfor %}
+        <form action="{% url 'delete_finished' %}" method="post">
+            {% csrf_token %}
+            <input type="radio" value="yes" name="delete"> Да<br>
+            <input type="radio" value="no" name="delete" checked> Нет<br>
+            <input type="submit" value="Подтвердить">
+        </form>
+    {% endblock %}
+</div>
+</body>
+</html>
