@@ -20,6 +20,9 @@
 </body>
 <div class='container'>
     {% block content %}
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
         <h1>Задачи</h1>
     {% if tasks %}
 		<div class='task_block'>
@@ -39,7 +42,7 @@
     			{% for task in tasks %}
 	        		<tr>
 	        			<td>
-		            		<a <h2>{{ task.name }}</h2>
+                            <a href="{%  url 'task_view' task.pk %}"><h2>{{ task.name }}</h2></a>
 	        			</td>
 	        			<td>
 		            		<h2>{{ task.status }}</h2>
@@ -58,9 +61,11 @@
         {% else %}
             <h3>Задач пока нет</h3>
         {% endif %}
-    	<h2>Добавить новую задачу</h2>
-
-    	<form action="{% url 'create' %}" method="post">
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+        <h2>Добавить новую задачу</h2>
+        <form action="{% url 'create' %}" method="post">
 	        {% csrf_token %}
         	<label>Наименование задачи:</label><br/>
         	<input type="text" name="name"/><br/>

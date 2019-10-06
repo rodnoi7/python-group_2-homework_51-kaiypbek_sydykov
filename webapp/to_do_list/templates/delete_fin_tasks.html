@@ -20,9 +20,17 @@
 </body>
 <div class='container'>
     {% block content %}
-        <h2>{{ task.name }}</h2>
-        <h3>{{ task.status }}</h3>
-        <h4>{{ task.created_at }}</h4>
+        <h3>Вы уверены что хотите удалить задачи?</h3>
+        {% for task in tasks %}
+            {{ task.name }}
+            <hr>
+        {% endfor %}
+        <form action="{% url 'delete_finished' %}" method="post">
+            {% csrf_token %}
+            <input type="radio" value="yes" name="delete"> Да<br>
+            <input type="radio" value="no" name="delete" checked> Нет<br>
+            <input type="submit" value="Подтвердить">
+        </form>
     {% endblock %}
 </div>
 </body>

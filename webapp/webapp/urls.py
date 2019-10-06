@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from to_do_list.views import IndexView, create_view, update_view, delete_view, delete_finished_tasks
+from to_do_list.views import IndexView, create_view, update_view, delete_view, delete_finished_tasks, TaskView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
@@ -25,5 +25,6 @@ urlpatterns = [
     path('task/<int:task_pk>/update', update_view, name='update'),
     path('task/<int:task_pk>/delete', delete_view, name='delete'),
     path('tasks/delete', delete_finished_tasks, name='delete_finished'),
+    path('task/<int:pk>', TaskView.as_view(), name='task_view'),
 ]
 urlpatterns += staticfiles_urlpatterns()

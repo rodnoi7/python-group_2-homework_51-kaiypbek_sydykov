@@ -1,19 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from to_do_list.forms import TaskForm
 from to_do_list.models import Task
-from django.views.generic import View
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
-class IndexView(View):
-    def get(self, request, *args, **kwargs):
-        form = TaskForm()
-        tasks = Task.objects.all()
-        context = {
-            'tasks': tasks,
-            'form': form
-        }
-        return render(request, 'index.html', context)
+class IndexView(ListView):
+    template_name = 'index.html'
+    context_object_name = 'tasks'
+    paginate_by = 3
+    paginate_orphans = 1
+
+    def get_queryset(self):
+        return Task.objects.all().order_by('-created_at')
 
 def create_view(request):
     if request.method == 'POST':
@@ -63,3 +62,9 @@ def delete_finished_tasks(request):
             tasks = Task.objects.filter(status='Завершено')
             tasks.delete()
         return redirect('index')
+
+class TaskView(DetailView):
+    template_name = 'task_view.html'
+    context_key = 'task'
+    model = Task
+    key_kwarg = 'task_pk'

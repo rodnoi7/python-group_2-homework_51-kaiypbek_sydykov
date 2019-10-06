@@ -7,6 +7,7 @@ body {
 .container {
     width: 80%;
     margin: 0 auto;
+    padding-top: 30px;
 }
 
 a {
@@ -20,7 +21,7 @@ a:hover, a:visited {
 
 .navbar {
     display: block;
-    background: #0574fd;
+    background: #8e9195;
     position: fixed;
     top: 0;
     right: 0;
@@ -45,6 +46,7 @@ a:hover, a:visited {
     border: 1px solid #000000;
     border-radius: 8px;
     padding: 5px;
+    background-color: #496684;
 }
 
 .menu li a, .but {
@@ -60,7 +62,42 @@ h1 {
     margin-top: 50px;
 }
 
-.desription {
-    overflow: hidden;
-    word-wrap: break-word;
+h2 {
+    display: inline-block;
+}
+
+table tr td, table tr th{
+    border: 1px solid #000;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.pagination {
+   text-align: center;
+}
+
+.pagination a, .pagination .page-disabled {
+   display: inline-block;
+   border: solid 1px #6a7ddd;
+   border-radius: 3px;
+   padding: 5px;
+   margin: 3px;
+}
+
+.pagination a {
+   background: #6a7ddd;
+   color: white;
+}
+
+.pagination a:hover {
+   background: #6a7dff;
+   text-decoration: underline;
+}
+
+.pagination .page-disabled {
+   background: #6a7dcc;
+   color: #dddddd
 }
