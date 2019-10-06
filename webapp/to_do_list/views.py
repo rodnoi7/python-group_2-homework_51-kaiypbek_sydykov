@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from to_do_list.forms import TaskForm
 from to_do_list.models import Task
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, TemplateView
 
 # Create your views here.
 
@@ -63,8 +63,9 @@ def delete_finished_tasks(request):
             tasks.delete()
         return redirect('index')
 
-class TaskView(DetailView):
-    template_name = 'task_view.html'
-    context_key = 'task'
-    model = Task
-    key_kwarg = 'task_pk'
+class DetailView(TemplateView):
+   template_name = 'task_view.html'
+
+   def get_context_data(self, **kwargs):
+       kwargs['task'] = get_object_or_404(Task, pk=kwargs['task_pk'])
+       return super().get_context_data(**kwargs)
